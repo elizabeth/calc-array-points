@@ -9,103 +9,152 @@
 import Foundation
 
 // Build a calculator
-func add(first : Int, second : Int) -> Double {
-    return Double(first) + Double(second)
+func add(left : Int, right : Int) -> Double {
+    return Double(left) + Double(right)
 }
 
-func subtract(first : Int, second : Int) -> Double {
-    return Double(first) - Double(second)
+func subtract(left : Int, right : Int) -> Double {
+    return Double(left) - Double(right)
 }
 
-func multiply(first : Int, second : Int) -> Double {
-    return Double(first) * Double(second)
+func multiply(left : Int, right : Int) -> Double {
+    return Double(left) * Double(right)
 }
 
-func divide(first : Int, second : Int) -> Double {
- 	return Double(first) / Double(second)
+func divide(left : Int, right : Int) -> Double {
+ 	return Double(left) / Double(right)
 }
 
-func math(first : Int?, second : Int?, op : (Int, Int) -> Double) -> Double {
-    guard let f = first else {
+func mathOperation(left : Int?, right : Int?, operation : (Int, Int) -> Double) -> Double {
+    guard let l = left else {
         print("Must enter valid integers")
         return 0.0
     }
     
-    guard let s = second else {
+    guard let r = right else {
         print("Must enter valid integers")
         return 0.0
     }
     
-    return op(f, s)
+    return operation(l, r)
 }
 
 // Array fun
-func addArray(nums : Array<Int>) -> Double {
+func add(array : Array<Int>) -> Double {
 	var result : Int = 0
-	for num in nums {
+	for num in array {
 		result += num
 	}
 
 	return Double(result)
 }
 
-func multiplyArray(nums : Array<Int>) -> Double {
+func multiply(array : Array<Int>) -> Double {
 	var result : Int = 1
-    if nums.count == 0 {
+    if reduce(array : array, operation : count) == 0 {
         result = 0
     }
     
-	for num in nums {
+	for num in array {
 		result *= num
 	}
 
 	return Double(result)
 }
 
-func count(nums : Array<Int>) -> Double {
-	return Double(nums.count)
-}
-
-func avg(nums : Array<Int>) -> Double {
-	let total = addArray(nums: nums)
+func average(array : Array<Int>) -> Double {
+    let total = add(array: array)
     
-    let totalNum = nums.count
+    let totalNum = array.count
     if totalNum == 0 {
         print("Array had no ints")
         return 0.0
     }
-
-	return total/Double(totalNum)
+    
+    return total/Double(totalNum)
 }
 
-func mathArray(numArray : Array<Int>?, op : (Array<Int>) -> Double) -> Double {
-    guard let array = numArray else {
+func count(array : Array<Int>) -> Double {
+	return Double(array.count)
+}
+
+func reduce(array : Array<Int>?, operation : (Array<Int>) -> Double) -> Double {
+    guard let numArray = array else {
         print("Must pass an array")
         return 0.0
     }
     
-    return op(array)
+    return operation(numArray)
 }
 
 // Points
-func addPoint(first : (Int, Int), second : (Int, Int)) -> (Int, Int) {
-	return(first.0 + second.0, first.1 + second.1)
+func add(p1 : (Int, Int), p2 : (Int, Int)) -> (Int, Int) {
+    return (p1.0 + p2.0, p1.1 + p2.1)
 }
 
-func subtractPoint(first : (Int, Int), second : (Int, Int)) -> (Int, Int) {
-	return (first.0 - second.0, first.1 - second.1)	
+func subtract(p1 : (Int, Int), p2 : (Int, Int)) -> (Int, Int) {
+	return (p1.0 - p2.0, p1.1 - p2.1)
 }
 
-//func mathPoint(first : (Int, Int), second : (Int, Int), op : ((Int, Int), (Int, Int)) -> (Int, Int)) -> (Int, Int) {
+//func mathOperation(first : (Int, Int), second : (Int, Int), op : ((Int, Int), (Int, Int)) -> (Int, Int)) -> (Int, Int) {
 //    return op(first, second)
 //}
 
-func addDict(first : Dictionary<String, Double>, second : Dictionary<String, Double>) -> Dictionary<String, Double> {
-	return ["x" : first["x"]! + second["x"]!, "y" : first["y"]! + second["y"]!]
+// Dictionary points
+func add(p1 : Dictionary<String, Int>?, p2 : Dictionary<String, Int>?) -> Dictionary<String, Int>? {
+	return ["x" : p1!["x"]! + p2!["x"]!, "y" : p1!["y"]! + p2!["y"]!]
 }
 
-func subtractDict(first : Dictionary<String, Double>, second : Dictionary<String, Double>) -> Dictionary<String, Double> {
-	return ["x": first["x"]! - second["x"]!, "y" : first["y"]! - second["y"]!]
+func subtract(p1 : Dictionary<String, Int>?, p2 : Dictionary<String, Int>?) -> Dictionary<String, Int>? {
+	return ["x": p1!["x"]! - p2!["x"]!, "y" : p1!["y"]! - p2!["y"]!]
+}
+
+func add(p1 : Dictionary<String, Double>?, p2 : Dictionary<String, Double>?) -> Dictionary<String, Double>? {
+    guard p1?["x"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    guard p1?["y"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    guard p2?["x"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    guard p2?["y"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    return ["x" : p1!["x"]! + p2!["x"]!, "y" : p1!["y"]! + p2!["y"]!]
+}
+
+func subtract(p1 : Dictionary<String, Double>?, p2 : Dictionary<String, Double>?) -> Dictionary<String, Double>? {
+    guard p1?["x"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    guard p1?["y"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    guard p2?["x"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    guard p2?["y"] != nil else {
+        print("Must pass valid dictionary")
+        return ["x": 0, "y": 0]
+    }
+    
+    return ["x": p1!["x"]! - p2!["x"]!, "y" : p1!["y"]! - p2!["y"]!]
 }
 
 //func mathDict(first : Dictionary<String, Double>, second : Dictionary<String, Double>, op : (Dictionary<String, Double>, Dictionary<String, Double>) -> Dictionary<String, Double>) -> Dictionary<String, Double> {

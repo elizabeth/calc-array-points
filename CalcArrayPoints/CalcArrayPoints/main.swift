@@ -126,7 +126,7 @@ func average(array : Array<Int>?) -> Double? {
         return nil
     }
     
-    return total/Double(totalNum)
+    return total!/Double(totalNum)
 }
 
 func count(array : Array<Int>?) -> Double? {

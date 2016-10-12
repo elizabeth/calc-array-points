@@ -22,7 +22,7 @@ func multiply(left : Int, right : Int) -> Double {
 }
 
 func divide(left : Int, right : Int) -> Double {
- 	return Double(left) / Double(right)
+    return Double(left) / Double(right)
 }
 
 func mathOperation(left : Int?, right : Int?, operation : (Int, Int) -> Double) -> Double {
@@ -41,25 +41,25 @@ func mathOperation(left : Int?, right : Int?, operation : (Int, Int) -> Double) 
 
 // Array fun
 func add(array : Array<Int>) -> Double {
-	var result : Int = 0
-	for num in array {
-		result += num
-	}
+    var result : Int = 0
+    for num in array {
+        result += num
+    }
 
-	return Double(result)
+    return Double(result)
 }
 
 func multiply(array : Array<Int>) -> Double {
-	var result : Int = 1
+    var result : Int = 1
     if reduce(array : array, operation : count) == 0 {
         result = 0
     }
     
-	for num in array {
-		result *= num
-	}
+    for num in array {
+        result *= num
+    }
 
-	return Double(result)
+    return Double(result)
 }
 
 func average(array : Array<Int>) -> Double {
@@ -75,7 +75,7 @@ func average(array : Array<Int>) -> Double {
 }
 
 func count(array : Array<Int>) -> Double {
-	return Double(array.count)
+    return Double(array.count)
 }
 
 func reduce(array : Array<Int>?, operation : (Array<Int>) -> Double) -> Double {
@@ -93,7 +93,7 @@ func add(p1 : (Int, Int), p2 : (Int, Int)) -> (Int, Int) {
 }
 
 func subtract(p1 : (Int, Int), p2 : (Int, Int)) -> (Int, Int) {
-	return (p1.0 - p2.0, p1.1 - p2.1)
+    return (p1.0 - p2.0, p1.1 - p2.1)
 }
 
 //func mathOperation(first : (Int, Int), second : (Int, Int), op : ((Int, Int), (Int, Int)) -> (Int, Int)) -> (Int, Int) {
@@ -102,11 +102,11 @@ func subtract(p1 : (Int, Int), p2 : (Int, Int)) -> (Int, Int) {
 
 // Dictionary points
 func add(p1 : Dictionary<String, Int>?, p2 : Dictionary<String, Int>?) -> Dictionary<String, Int>? {
-	return ["x" : p1!["x"]! + p2!["x"]!, "y" : p1!["y"]! + p2!["y"]!]
+    return ["x" : p1!["x"]! + p2!["x"]!, "y" : p1!["y"]! + p2!["y"]!]
 }
 
 func subtract(p1 : Dictionary<String, Int>?, p2 : Dictionary<String, Int>?) -> Dictionary<String, Int>? {
-	return ["x": p1!["x"]! - p2!["x"]!, "y" : p1!["y"]! - p2!["y"]!]
+    return ["x": p1!["x"]! - p2!["x"]!, "y" : p1!["y"]! - p2!["y"]!]
 }
 
 func add(p1 : Dictionary<String, Double>?, p2 : Dictionary<String, Double>?) -> Dictionary<String, Double>? {
